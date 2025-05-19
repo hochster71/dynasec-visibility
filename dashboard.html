@@ -1,9 +1,51 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>CIC Dashboard</title></head>
-<body style="background:#0d1117;color:white;font-family:sans-serif;padding:2rem;">
-<h1>Command Intelligence Center (CIC) Dashboard</h1>
-<p>This dashboard will display real-time revenue, ATS analytics, Stripe transaction logs, and Firebase command actions.</p>
-<p>Status: Launching Stripe & Firebase backend next.</p>
-</body></html>
+<head>
+  <meta charset="UTF-8" />
+  <title>CIC Command Center – Live Intel Feed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background: #0d1117; color: #f0f6fc; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { padding: 2rem; background: #161b22; border-bottom: 2px solid #30363d; text-align: center; }
+    header h1 { margin: 0; font-size: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 2rem; }
+    .tile { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; }
+    .tile h2 { color: #38bdf8; margin-top: 0; }
+    .tile p { font-size: 0.95rem; color: #cbd5e1; }
+    .tile .data { font-size: 1.5rem; font-weight: bold; color: #10b981; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CIC Command Dashboard</h1>
+    <p>Operational Metrics · AI Revenue · Resume Intel · Global Logs</p>
+  </header>
+  <div class="grid">
+    <div class="tile">
+      <h2>Today's Revenue</h2>
+      <p class="data">$0.00 (Stripe Connected)</p>
+    </div>
+    <div class="tile">
+      <h2>Weekly Transactions</h2>
+      <p class="data">0</p>
+      <p>Status: Stripe webhook initializing</p>
+    </div>
+    <div class="tile">
+      <h2>ATS Resume Uploads</h2>
+      <p class="data">0</p>
+      <p>Status: Firebase sync queued</p>
+    </div>
+    <div class="tile">
+      <h2>Live Command Logs</h2>
+      <p>Status: CIC event feed active</p>
+      <p class="data">Logging Commander activity...</p>
+    </div>
+    <div class="tile">
+      <h2>Current Online Users</h2>
+      <p class="data">1 (You)</p>
+      <p>Status: Client analytics pending injection</p>
+    </div>
+  </div>
+</body>
+</html>
