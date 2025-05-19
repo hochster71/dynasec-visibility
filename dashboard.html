@@ -3,8 +3,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CIC Command Center – Live Intel Feed</title>
+  <title>Dynasec CIC – Live Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script>
+    // Replace with your live Firebase config
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    // Example logging command
+    function logCommanderAction(action) {
+      db.ref("logs").push({
+        action: action,
+        timestamp: new Date().toISOString()
+      });
+    }
+
+    function simulateRevenueUpdate() {
+      document.getElementById("revenue").textContent = "$12,340.75";
+      document.getElementById("transactions").textContent = "23";
+    }
+
+    window.onload = function() {
+      logCommanderAction("CIC dashboard accessed");
+      simulateRevenueUpdate();
+    };
+  </script>
   <style>
     body { background: #0d1117; color: #f0f6fc; font-family: Arial, sans-serif; margin: 0; padding: 0; }
     header { padding: 2rem; background: #161b22; border-bottom: 2px solid #30363d; text-align: center; }
@@ -19,32 +53,32 @@
 <body>
   <header>
     <h1>CIC Command Dashboard</h1>
-    <p>Operational Metrics · AI Revenue · Resume Intel · Global Logs</p>
+    <p>Live Revenue · Resume Intel · Transactions · Activity Logs</p>
   </header>
   <div class="grid">
     <div class="tile">
       <h2>Today's Revenue</h2>
-      <p class="data">$0.00 (Stripe Connected)</p>
+      <p id="revenue" class="data">$0.00</p>
     </div>
     <div class="tile">
       <h2>Weekly Transactions</h2>
-      <p class="data">0</p>
+      <p id="transactions" class="data">0</p>
       <p>Status: Stripe webhook initializing</p>
     </div>
     <div class="tile">
       <h2>ATS Resume Uploads</h2>
       <p class="data">0</p>
-      <p>Status: Firebase sync queued</p>
+      <p>Status: Firebase resume counter next</p>
     </div>
     <div class="tile">
-      <h2>Live Command Logs</h2>
-      <p>Status: CIC event feed active</p>
-      <p class="data">Logging Commander activity...</p>
+      <h2>Commander Logs</h2>
+      <p>Status: Logging active</p>
+      <p class="data">Tracking live actions...</p>
     </div>
     <div class="tile">
-      <h2>Current Online Users</h2>
+      <h2>Online Users</h2>
       <p class="data">1 (You)</p>
-      <p>Status: Client analytics pending injection</p>
+      <p>Future status: client tracking via Firebase</p>
     </div>
   </div>
 </body>
