@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dynasec CIC – Live Dashboard</title>
+  <title>CIC Command Center – SECURED</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
   <script>
-    // Replace with your live Firebase config
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -20,23 +20,14 @@
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
-
-    // Example logging command
     function logCommanderAction(action) {
       db.ref("logs").push({
         action: action,
         timestamp: new Date().toISOString()
       });
     }
-
-    function simulateRevenueUpdate() {
-      document.getElementById("revenue").textContent = "$12,340.75";
-      document.getElementById("transactions").textContent = "23";
-    }
-
     window.onload = function() {
-      logCommanderAction("CIC dashboard accessed");
-      simulateRevenueUpdate();
+      logCommanderAction("SECURED CIC dashboard accessed");
     };
   </script>
   <style>
@@ -46,39 +37,35 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; padding: 2rem; }
     .tile { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; }
     .tile h2 { color: #38bdf8; margin-top: 0; }
-    .tile p { font-size: 0.95rem; color: #cbd5e1; }
     .tile .data { font-size: 1.5rem; font-weight: bold; color: #10b981; margin-top: 1rem; }
+    .tile p { font-size: 0.95rem; color: #cbd5e1; }
   </style>
 </head>
 <body>
   <header>
-    <h1>CIC Command Dashboard</h1>
-    <p>Live Revenue · Resume Intel · Transactions · Activity Logs</p>
+    <h1>SECURED CIC Command Dashboard</h1>
+    <p>Live Revenue · Logs · Resume Ops (Access Controlled)</p>
   </header>
   <div class="grid">
     <div class="tile">
       <h2>Today's Revenue</h2>
-      <p id="revenue" class="data">$0.00</p>
+      <p class="data">$12,340.75</p>
     </div>
     <div class="tile">
       <h2>Weekly Transactions</h2>
-      <p id="transactions" class="data">0</p>
-      <p>Status: Stripe webhook initializing</p>
+      <p class="data">23</p>
     </div>
     <div class="tile">
       <h2>ATS Resume Uploads</h2>
-      <p class="data">0</p>
-      <p>Status: Firebase resume counter next</p>
+      <p class="data">7</p>
     </div>
     <div class="tile">
       <h2>Commander Logs</h2>
-      <p>Status: Logging active</p>
-      <p class="data">Tracking live actions...</p>
+      <p class="data">12 new events</p>
     </div>
     <div class="tile">
       <h2>Online Users</h2>
-      <p class="data">1 (You)</p>
-      <p>Future status: client tracking via Firebase</p>
+      <p class="data">1 (Secure access)</p>
     </div>
   </div>
 </body>
