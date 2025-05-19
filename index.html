@@ -3,62 +3,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dynasec CIC Command Center</title>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-  <script>
-    // Firebase config (replace with live keys when ready)
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
+  <title>Dynasec AI Solutions – AI Command Empire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dynasec AI Solutions is the first AI-commanded cybersecurity empire, founded by LCDR Michael Hoch, USN (Ret.). Powering global digital dominance through invention, strategy, and automation." />
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background-color: #0e1117; color: #ffffff; }
-    header { background-color: #1f2937; padding: 1rem; text-align: center; font-size: 1.5rem; font-weight: bold; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding: 1.5rem; }
-    .card { background: #1f2937; border: 1px solid #374151; padding: 1rem; border-radius: 12px; }
-    .card h3 { margin-top: 0; color: #60a5fa; }
-    .btn { margin-top: 1rem; padding: 0.5rem 1rem; background-color: #3b82f6; border: none; border-radius: 6px; color: white; font-weight: bold; cursor: pointer; }
-    .btn:hover { background-color: #2563eb; }
+    body {
+      margin: 0;
+      background: linear-gradient(145deg, #0a0a0a, #121212);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f8f9fa;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #0f172a;
+      border-bottom: 2px solid #1e293b;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #94a3b8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2.5rem;
+    }
+    .tile {
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+    .tile:hover {
+      transform: scale(1.03);
+      border-color: #38bdf8;
+    }
+    .tile h3 {
+      margin: 0;
+      color: #38bdf8;
+    }
+    .tile p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+    .tile a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #3b82f6;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 2rem;
+      border-top: 1px solid #334155;
+      background-color: #0f172a;
+      color: #64748b;
+    }
   </style>
 </head>
 <body>
-  <header>Dynasec CIC Command Center – LCDR Michael Hoch</header>
+  <header>
+    <h1>Dynasec AI Solutions</h1>
+    <p>AI-Powered Cybersecurity Empire Commanded by LCDR Michael Hoch, USN (Ret.)</p>
+  </header>
   <div class="grid">
-    <div class="card">
-      <h3>Job Tracker</h3>
-      <p>Monitor applications, ATS scores, and interview progress.</p>
-      <button class="btn" onclick="alert('Tracker Activated')">View Tracker</button>
+    <div class="tile">
+      <h3>About Us</h3>
+      <p>Dynasec leads the future of defense-grade AI cybersecurity strategy and invention.</p>
+      <a href="/about.html">Read More</a>
     </div>
-    <div class="card">
-      <h3>Resume Lab</h3>
-      <p>Upload, edit, and download resumes optimized for clearance roles.</p>
-      <button class="btn" onclick="alert('Resume Lab Loading...')">Launch Resume Lab</button>
+    <div class="tile">
+      <h3>Commander</h3>
+      <p>Founder Michael Hoch built this empire from the deckplate to the data center.</p>
+      <a href="/commander.html">View Profile</a>
     </div>
-    <div class="card">
-      <h3>Stripe Sales</h3>
-      <p>Track sales of AI tools and services.</p>
-      <form action="https://buy.stripe.com/test_4gw8zd0PA7gU3c8288" method="GET">
-        <button class="btn" type="submit">Buy Now – $25,000</button>
-      </form>
+    <div class="tile">
+      <h3>CIC Dashboard</h3>
+      <p>Monitor operational data, AI transactions, and global reach in real time.</p>
+      <a href="/dashboard.html">Command Center</a>
     </div>
-    <div class="card">
-      <h3>Firebase Logs</h3>
-      <p>Log operational activity in real-time from CIC.</p>
-      <button class="btn" onclick="firebase.database().ref('logs/').push({ action: 'Clicked Firebase Logs', timestamp: Date.now() }); alert('Log sent to Firebase')">Open Logs</button>
+    <div class="tile">
+      <h3>Invention Store</h3>
+      <p>Explore enterprise-grade tools, kits, and patent-ready offerings powered by AI.</p>
+      <a href="/store.html">Launch Store</a>
     </div>
-    <div class="card">
-      <h3>Empire Expansion</h3>
-      <p>Track new divisions, patents, client pipelines.</p>
-      <button class="btn" onclick="alert('Expansion Protocol Engaged')">Command Empire</button>
+    <div class="tile">
+      <h3>Press Kit</h3>
+      <p>Download our media assets, legacy statement, and global release decks.</p>
+      <a href="/press.html">Access Media Vault</a>
     </div>
   </div>
+  <footer>&copy; 2025 Dynasec AI Solutions | All Rights Reserved | Built by AI. Led by Legacy.</footer>
 </body>
 </html>
