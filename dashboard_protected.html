@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Commander Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0A0F1C;
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 2rem;
+    }
+    #dashboard {
+      display: none;
+    }
+    .status-tile {
+      background-color: #1F2739;
+      border: 1px solid #2C3E50;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 1rem;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    }
+    .status-tile h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    .restricted-warning {
+      color: #FF5F57;
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function authenticate() {
+      var password = prompt("Commander Access Code Required:");
+      if (password === "Lxl@vQ8u@8*s>}0{8K@86TvD") {
+        document.getElementById("dashboard").style.display = "block";
+      } else {
+        alert("ACCESS DENIED.");
+        window.location.href = "https://www.google.com";
+      }
+    }
+    window.onload = authenticate;
+  </script>
+</head>
+<body>
+  <div id="dashboard">
+    <h1>COMMANDER OPS CENTER</h1>
+
+    <div class="status-tile">
+      <h2>🛰️ Mission Status</h2>
+      <p>Homepage: Online and secure</p>
+      <p>Empire Ops: Standing by</p>
+      <p>Real-time feeds: Incoming</p>
+    </div>
+
+    <div class="status-tile">
+      <h2>🔒 Access Control</h2>
+      <p>Commander Auth Enabled</p>
+      <p>Unauthorized users will be redirected</p>
+    </div>
+
+    <p class="restricted-warning">⚠️ Restricted Access – Authorized Personnel Only</p>
+  </div>
+</body>
+</html>
