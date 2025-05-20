@@ -8,15 +8,11 @@
   <style>
     body { background: #0d1117; color: #f8fafc; font-family: Arial, sans-serif; margin: 0; padding: 0; }
     header, footer { text-align: center; padding: 2rem; background-color: #111827; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1000px; margin: auto; }
-    .tile { background: #1e293b; padding: 1.5rem; border-radius: 10px; text-align: center; border: 1px solid #2563eb; }
-    .tile h3 { color: #38bdf8; margin: 0.5rem 0; }
-    .tile p { font-size: 0.9rem; }
-    .cta { background: #0f172a; padding: 2rem; text-align: center; }
-    .cta h2 { color: #22d3ee; }
-    .cta p, .cta a { display: block; margin: 0.5rem 0; }
-    .cta a { color: #38bdf8; text-decoration: none; font-weight: bold; }
-    footer .footer-tag { font-size: 0.85rem; color: #94a3b8; margin-top: 1rem; }
+    .hero { padding: 2rem; text-align: center; }
+    .hero h1 { color: #38bdf8; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.2rem; color: #cbd5e1; }
+    .cta-buttons a { display: inline-block; margin: 1rem; padding: 1rem 2rem; background: #38bdf8; color: #000; font-weight: bold; text-decoration: none; border-radius: 6px; }
+    .footer-tag { font-size: 0.85rem; color: #94a3b8; margin-top: 1rem; }
   </style>
 </head>
 <body>
@@ -26,22 +22,15 @@
     <p>Commanded by LCDR Michael Hoch, U.S. Navy (Ret.)</p>
   </header>
 
-  <div class="grid">
-    <div class="tile"><h3>VaultMind AI</h3><p>IP Security & Encryption</p></div>
-    <div class="tile"><h3>HealthSec AI</h3><p>Healthcare Cybersecurity</p></div>
-    <div class="tile"><h3>FinShield AI</h3><p>Financial Threat Detection</p></div>
-    <div class="tile"><h3>OrbitalSec</h3><p>Satellite & Space AI</p></div>
-    <div class="tile"><h3>NeuroDyn</h3><p>Cognitive Enhancement</p></div>
-    <div class="tile"><h3>Genova AI</h3><p>Civilization Simulation</p></div>
-    <div class="tile"><h3>RetailIntel</h3><p>AI for Commerce</p></div>
-    <div class="tile"><h3>BrandForge AI</h3><p>Brand Creation Systems</p></div>
-  </div>
-
-  <div class="cta">
-    <h2>Featured Products</h2>
-    <p><a href="catalog.html">View All Stripe-Enabled Products</a></p>
-    <p><a href="invest.html">Explore Commander Investment Tiers</a></p>
-  </div>
+  <section class="hero">
+    <h1>World’s First AI Command Platform</h1>
+    <p>Lead with power. Operate with precision. Earn on autopilot.</p>
+    <div class="cta-buttons">
+      <a href="store.html">Visit Store</a>
+      <a href="catalog.html">View Catalog</a>
+      <a href="dashboard.html">CIC Login</a>
+    </div>
+  </section>
 
   <footer>
     <p>&copy; 2028 Dynasec AI Solutions — Commanded by LCDR Michael Hoch, USN (Ret.)</p>
