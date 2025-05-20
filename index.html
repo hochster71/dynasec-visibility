@@ -2,27 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynasec AI Solutions</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynasec AI Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #0A0F1C;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+    .homepage-container {
+      text-align: center;
+      position: relative;
+    }
+    .homepage-image {
+      max-width: 100%;
+      height: auto;
+    }
+    .cta-button {
+      position: absolute;
+      top: 68%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #00bcd4;
+      padding: 1rem 2rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+      z-index: 10;
+    }
+    .cta-button:hover {
+      background-color: #008c9e;
+    }
+  </style>
 </head>
 <body>
-    <img src="DYNASECAISOLUTIONS_homepage_approved_20250520.png" alt="Dynasec AI Solutions Homepage">
+  <div class="homepage-container">
+    <img class="homepage-image" src="DYNASECAISOLUTIONS_homepage_approved_20250520.png" alt="Dynasec Homepage">
+    <a class="cta-button" href="/dashboard">GET STARTED</a>
+  </div>
 </body>
 </html>
