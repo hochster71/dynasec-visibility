@@ -1,1 +1,44 @@
-<html><body style='background:#0d1117;color:white;padding:2rem;font-family:sans-serif;'><h1>Proposals</h1><p>PDF Generator live with industry customization.</p></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynasec Proposal Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { background: #0d1117; color: #f1f5f9; font-family: Arial, sans-serif; padding: 2rem; }
+    h1 { text-align: center; color: #38bdf8; }
+    section { margin-top: 2rem; background: #1e293b; padding: 2rem; border-radius: 10px; }
+    label, select, input, button { display: block; width: 100%; margin-top: 1rem; font-size: 1rem; }
+    input, select { padding: 0.75rem; border: 1px solid #334155; border-radius: 5px; background: #0f172a; color: #f8fafc; }
+    button { background: #38bdf8; color: #000; font-weight: bold; border: none; padding: 0.75rem; border-radius: 5px; cursor: pointer; }
+    footer { text-align: center; margin-top: 3rem; font-size: 0.85rem; color: #94a3b8; }
+  </style>
+</head>
+<body>
+  <h1>Dynasec Automated Proposal Generator</h1>
+  <section>
+    <form action="#" method="post">
+      <label for="product">Select Product:</label>
+      <select id="product" name="product">
+        <option value="resume_ai">Resume AI – $997</option>
+        <option value="empire_builder">Empire Builder Kit – $50,000</option>
+        <option value="partner_license">Partner License – $25,000</option>
+        <option value="global_tier">Global Investment Tier – $100,000</option>
+      </select>
+
+      <label for="client_name">Client Name:</label>
+      <input type="text" id="client_name" name="client_name" placeholder="e.g., John Stratton" required>
+
+      <label for="email">Client Email:</label>
+      <input type="email" id="email" name="email" placeholder="e.g., john@email.com" required>
+
+      <button type="submit">Generate Proposal PDF</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2028 Dynasec AI Solutions — Commanded by LCDR Michael Hoch, USN (Ret.)
+  </footer>
+</body>
+</html>
