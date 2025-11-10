@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.firebaseapp.com https://*.googleapis.com;">
   <title>Commander Dashboard</title>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  <!-- Firebase SDK v10.7.1 - Latest stable -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
   <script src="./firebase-config.js"></script>
 </head>
 <body>
   <h1>Welcome to the Commander Dashboard</h1>
   <script>
+    /**
+     * Dashboard - Protected Route
+     * 
+     * Security improvements:
+     * - Updated to Firebase SDK v10.7.1
+     * - Added CSP headers
+     * - Proper authentication check
+     * 
+     * Reference: https://firebase.google.com/docs/auth/web/manage-users
+     */
     firebase.auth().onAuthStateChanged(function(user) {
       if (!user) {
+        // User is not authenticated, redirect to login
         window.location.href = "/dashboard/login.html";
+      } else {
+        // User is authenticated, can access dashboard
+        console.log('User authenticated:', user.email);
       }
     });
   </script>

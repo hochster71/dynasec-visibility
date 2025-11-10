@@ -1,0 +1,8 @@
+# Python Dependencies for Dynasec Visibility
+
+# HTTP library for API requests
+# Latest version with security patches
+requests>=2.31.0,<3.0.0
+
+# Note: No need for additional dependencies
+# The github_auto_upload_bot.py only requires requests and standard library modules

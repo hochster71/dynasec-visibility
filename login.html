@@ -1,28 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.firebaseapp.com https://*.googleapis.com;">
   <title>Commander Login</title>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  <!-- Firebase SDK v10.7.1 - Latest stable -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
   <script src="./firebase-config.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0A0F1C;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: #1F2739;
+      border: 1px solid #2C3E50;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    }
+    h2 {
+      color: #38bdf8;
+      text-align: center;
+      margin-top: 0;
+    }
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #2C3E50;
+      border-radius: 0.5rem;
+      background-color: #0A0F1C;
+      color: #FFFFFF;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #38bdf8;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0ea5e9;
+    }
+    button:disabled {
+      background-color: #475569;
+      cursor: not-allowed;
+    }
+    .error {
+      color: #FF5F57;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      display: none;
+    }
+    .info {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <h2>Commander Access Only</h2>
-  <input type="email" id="email" placeholder="Email"><br>
-  <input type="password" id="password" placeholder="Password"><br>
-  <button onclick="login()">Login</button>
+  <div class="login-container">
+    <h2>Commander Access Only</h2>
+    <form id="loginForm" onsubmit="return false;">
+      <input 
+        type="email" 
+        id="email" 
+        placeholder="Email"
+        required
+        autocomplete="email"
+        aria-label="Email address"
+      />
+      <input 
+        type="password" 
+        id="password" 
+        placeholder="Password"
+        required
+        autocomplete="current-password"
+        aria-label="Password"
+      />
+      <button type="submit" id="loginButton" onclick="login()">Login</button>
+    </form>
+    <div id="error" class="error"></div>
+    <div class="info">Authorized personnel only</div>
+  </div>
+
   <script>
+    /**
+     * Commander Login - Firebase Authentication
+     * 
+     * Security improvements:
+     * - Updated to Firebase SDK v10.7.1 (latest stable)
+     * - Added CSP headers for XSS protection
+     * - Input validation and sanitization
+     * - Proper error handling without exposing internals
+     * - ARIA labels for accessibility
+     * - Rate limiting via Firebase (built-in)
+     * 
+     * References:
+     * - Firebase Auth Web: https://firebase.google.com/docs/auth/web/start
+     * - OWASP Authentication: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+     * - CSP: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+     */
+
+    function showError(message) {
+      const errorDiv = document.getElementById('error');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+      
+      // Clear error after 5 seconds
+      setTimeout(() => {
+        errorDiv.style.display = 'none';
+      }, 5000);
+    }
+
+    function setLoading(isLoading) {
+      const button = document.getElementById('loginButton');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      
+      button.disabled = isLoading;
+      emailInput.disabled = isLoading;
+      passwordInput.disabled = isLoading;
+      button.textContent = isLoading ? 'Logging in...' : 'Login';
+    }
+
+    function validateEmail(email) {
+      // RFC 5322 simplified email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function sanitizeInput(input) {
+      // Basic sanitization to prevent XSS
+      return input.trim().replace(/[<>]/g, '');
+    }
+
     function login() {
-      var email = document.getElementById("email").value;
-      var password = document.getElementById("password").value;
+      const email = sanitizeInput(document.getElementById("email").value);
+      const password = document.getElementById("password").value; // Don't sanitize password
+
+      // Client-side validation
+      if (!email || !password) {
+        showError("Please enter both email and password.");
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        showError("Please enter a valid email address.");
+        return;
+      }
+
+      if (password.length < 6) {
+        showError("Password must be at least 6 characters.");
+        return;
+      }
+
+      setLoading(true);
+
+      // Firebase Authentication
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
+          // Signed in successfully
+          // Firebase handles session management automatically
           window.location.href = "/dashboard/index.html";
         })
         .catch((error) => {
-          alert("Access Denied: " + error.message);
+          setLoading(false);
+          
+          // Log error for debugging (server-side in production)
+          console.error('Authentication error:', error.code);
+          
+          // User-friendly error messages without exposing internals
+          let userMessage = "Access denied. Please check your credentials.";
+          
+          switch(error.code) {
+            case 'auth/user-not-found':
+            case 'auth/wrong-password':
+            case 'auth/invalid-credential':
+              userMessage = "Invalid email or password.";
+              break;
+            case 'auth/too-many-requests':
+              userMessage = "Too many failed attempts. Please try again later.";
+              break;
+            case 'auth/user-disabled':
+              userMessage = "This account has been disabled.";
+              break;
+            case 'auth/network-request-failed':
+              userMessage = "Network error. Please check your connection.";
+              break;
+          }
+          
+          showError(userMessage);
         });
     }
+
+    // Handle Enter key press
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('password').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          login();
+        }
+      });
+      
+      // Check if already logged in
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is already signed in, redirect to dashboard
+          window.location.href = "/dashboard/index.html";
+        }
+      });
+    });
   </script>
 </body>
 </html>
