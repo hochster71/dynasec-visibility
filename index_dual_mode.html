@@ -4,48 +4,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dynasec AI Solutions - Advanced AI-powered security and intelligence solutions">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+  <meta name="theme-color" content="#0A0F1C">
   <title>Dynasec AI Solutions</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
       background-color: #0A0F1C;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       overflow: hidden;
     }
+    
     .container {
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
       max-width: 100vw;
       max-height: 100vh;
+      padding: 1rem;
     }
+    
     .homepage-image {
       width: auto;
       height: 90vh;
       max-width: 100%;
       max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1);
     }
 
-    /* Responsive for mobile portrait orientation */
+    /* Responsive design for tablets and mobile */
+    @media (max-width: 1024px) {
+      .homepage-image {
+        height: 80vh;
+      }
+    }
+
     @media (max-width: 768px) {
       body {
         align-items: flex-start;
         overflow-y: auto;
       }
+      
       .container {
         padding: 1rem;
         flex-direction: column;
         align-items: center;
+        min-height: 100vh;
       }
+      
       .homepage-image {
         width: 100%;
         height: auto;
         max-height: none;
       }
+    }
+
+    /* Loading state */
+    .homepage-image {
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Error fallback */
+    .error-message {
+      color: #f8fafc;
+      text-align: center;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
     }
   </style>
 </head>
@@ -54,7 +97,9 @@
     <img
       class="homepage-image"
       src="DYNASECAISOLUTIONS_homepage_approved_20250520.png"
-      alt="Dynasec Homepage"
+      alt="Dynasec AI Solutions - Advanced Security and Intelligence Platform"
+      loading="eager"
+      onerror="this.onerror=null; this.parentElement.innerHTML='<div class=error-message><h2>Image temporarily unavailable</h2><p>Please refresh the page</p></div>';"
     />
   </div>
 </body>

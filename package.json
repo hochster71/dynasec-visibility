@@ -1,0 +1,37 @@
+{
+  "name": "dynasec-visibility",
+  "version": "2.0.0",
+  "description": "Corporate website for Dynasec AI Solutions - AI-powered security and intelligence platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000",
+    "validate-html": "echo 'Install html-validator: npm install -g html-validator-cli'",
+    "security-check": "echo 'Run security checks with npm audit or snyk'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hochster71/dynasec-visibility.git"
+  },
+  "keywords": [
+    "dynasec",
+    "ai",
+    "security",
+    "intelligence",
+    "firebase",
+    "static-site"
+  ],
+  "author": "LCDR Michael Hoch, USN (Ret.)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/hochster71/dynasec-visibility/issues"
+  },
+  "homepage": "https://github.com/hochster71/dynasec-visibility#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.8.0"
+  },
+  "private": true
+}
