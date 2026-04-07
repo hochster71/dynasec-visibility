@@ -7,7 +7,9 @@
     "dev": "python3 -m http.server 8000",
     "serve": "python3 -m http.server 8000",
     "validate-html": "echo 'Install html-validator: npm install -g html-validator-cli'",
-    "security-check": "echo 'Run security checks with npm audit or snyk'"
+    "security-check": "echo 'Run security checks with npm audit or snyk'",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,10 @@
   },
   "homepage": "https://github.com/hochster71/dynasec-visibility#readme",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "vitest": "^1.6.0",
+    "@vitest/coverage-v8": "^1.6.0"
+  },
   "engines": {
     "node": ">=18.0.0",
     "python": ">=3.8.0"
